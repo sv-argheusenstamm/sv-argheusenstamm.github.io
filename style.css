@@ -165,30 +165,6 @@ body {
     font-weight: bold;
 }
 
-/* BUTTON FÜR "MEHR BEITRÄGE ANZEIGEN" */
-.load-more-box {
-    text-align: center;
-    margin-top: 25px;
-}
-
-.load-more-btn {
-    background-color: #0077c8;
-    color: #ffffff;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0, 119, 200, 0.3);
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-.load-more-btn:hover {
-    background-color: #005fa3;
-    transform: translateY(-2px);
-}
-
 /* ABOUT & AKTIONEN GRID */
 .about-grid {
     display: grid;
