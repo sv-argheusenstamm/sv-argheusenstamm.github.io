@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schülervertretung - ARG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Obere Leiste -->
+    <header class="top-bar">
+        <div class="logo">
+            <span class="logo-text">SCHÜLERVERTRETUNG</span>
+        </div>
+        
+        <button id="menuBtn" class="round-menu-btn" onclick="document.getElementById('fullMenu').classList.remove('hidden')">MENÜ ☰</button>
+    </header>
+
+    <!-- 1. BEREICH: STARTSEITE -->
+    <section id="startseite" class="page-section">
+        <div class="hero-header">
+            <div class="header-content">
+                <h1>SV ARG</h1>
+                <p>Schülervertretung des Adolf-Reichwein-Gymnasiums</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2 class="section-title">Neueste Informationen</h2>
+            <div id="news-container" class="news-container"></div>
+        </div>
+    </section>
+
+    <!-- 2. BEREICH: ÜBER UNS -->
+    <section id="uber-uns" class="page-section hidden">
+        <div class="hero-header">
+            <div class="header-content">
+                <h1>Über uns</h1>
+                <p>Schülervertretung des Adolf-Reichwein-Gymnasiums</p>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="about-container">
+                <h2>Die Schülervertretung des Adolf-Reichwein-Gymnasiums</h2>
+                <p class="intro-text">
+                    Wir sind die Schülervertretung (SV) des Adolf-Reichwein-Gymnasiums und setzen uns aktiv für die Interessen, Wünsche und Ideen aller Schülerinnen und Schüler unserer Schule ein. Wir verstehen uns als Bindeglied zwischen der Schülerschaft, der Lehrerschaft und der Schulleitung, um den Schulalltag gemeinsam zu gestalten und zu verbessern.
+                </p>
+
+                <div class="about-grid">
+                    <div class="about-box">
+                        <h3>Offene SV</h3>
+                        <p>Da wir eine offene SV sind, kann jeder bei uns mitmachen! Ganz egal aus welcher Klassenstufe du kommst – wenn du Lust hast, das Schulleben aktiv mitzugestalten, bist du bei uns herzlich willkommen.</p>
+                    </div>
+
+                    <div class="about-box">
+                        <h3>Demokratische Wahlen</h3>
+                        <p>Ein zentraler Baustein unserer Arbeit ist die jährliche Wahl der Stufen- und Schulsprecher. Zu Beginn des Schuljahres stellen sich die Kandidatinnen und Kandidaten in persönlichen Reden den einzelnen Klassenstufen vor. Anschließend wählen alle Schülerinnen und Schüler demokratisch und auf freiwilliger Basis ihre Vertretung.</p>
+                    </div>
+
+                    <div class="about-box">
+                        <h3>Aktionen & Schulleben</h3>
+                        <p>Die großen Schulfeste, die alle zwei Jahre stattfinden, werden nahezu komplett eigenständig von der SV organisiert. Auch in der Weihnachtszeit sorgen wir für Stimmung – der festlich geschmückte Weihnachtsbaum in der Aula stammt ebenfalls von uns.</p>
+                    </div>
+                </div>
+
+                <div class="call-to-action">
+                    <h3>Du hast ein Anliegen?</h3>
+                    <p>Wir haben stets ein offenes Ohr für eure Anliegen und freuen uns über jede Verstärkung in unserem Team!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. BEREICH: SV-MITGLIEDER -->
+    <section id="sv-mitglieder" class="page-section hidden">
+        <div class="hero-header">
+            <div class="header-content">
+                <h1>SV-Mitglieder</h1>
+                <p>Unser Team im Überblick</p>
+            </div>
+        </div>
+
+        <div class="main-content" id="members-container"></div>
+    </section>
+
+    <!-- 4. BEREICH: AKTIONEN UND PLÄNE -->
+    <section id="aktionen" class="page-section hidden">
+        <div class="hero-header">
+            <div class="header-content">
+                <h1>Aktionen & Pläne</h1>
+                <p>Unsere Projekte für dieses Schuljahr</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2 class="section-title">Geplante Aktionen</h2>
+            <div class="about-grid" id="actions-container"></div>
+        </div>
+    </section>
+
+    <!-- 5. BEREICH: SOCIAL MEDIA -->
+    <section id="social-media" class="page-section hidden">
+        <div class="hero-header">
+            <div class="header-content">
+                <h1>Social Media</h1>
+                <p>Folge uns auf unseren Kanälen!</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2 class="section-title">Unsere Kanäle</h2>
+
+            <div class="social-container">
+                <div class="social-card instagram-card">
+                    <div class="social-badge">Instagram</div>
+                    <h3>Unser Instagram-Account</h3>
+                    <p class="account-name">@arg_sv</p>
+
+                    <div class="qr-box">
+                        <a href="https://instagram.com/arg_sv" target="_blank">
+                            <img src="qr-instagram.png" alt="QR-Code Instagram" class="qr-img">
+                        </a>
+                    </div>
+                    <p class="social-desc">Scanne den QR-Code oder klicke darauf, um zu unserem Profil zu gelangen.</p>
+                </div>
+
+                <div class="social-card tiktok-card">
+                    <div class="social-badge tiktok-badge">TikTok</div>
+                    <h3>Unser TikTok-Account</h3>
+                    <p class="account-name">@schulervertretung1arg</p>
+
+                    <div class="qr-box">
+                        <a href="https://tiktok.com/@schulervertretung1arg" target="_blank">
+                            <img src="qr-tiktok.png" alt="QR-Code TikTok" class="qr-img">
+                        </a>
+                    </div>
+                    <p class="social-desc">Scanne den QR-Code oder klicke darauf, um zu unserem Profil zu gelangen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. BEREICH: KONTAKT & HILFE -->
+    <section id="kontakt" class="page-section hidden">
+        <div class="hero-header">
+            <div class="header-content">
+                <h1>Kontakt & Hilfe</h1>
+                <p>Wir sind für euch da!</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2 class="section-title">Schreib uns dein Anliegen</h2>
+            <div class="about-container">
+                <p>Du hast Fragen, Anregungen oder ein Problem? Sprich uns einfach in der Schule an oder schreibe uns eine Nachricht auf Instagram!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPUP GALLERY SLIDER MODAL -->
+    <div id="galleryModal" class="modal-overlay hidden" onclick="if(event.target === this) closeGallery()">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeGallery()">&times;</button>
+            
+            <div class="slider-container">
+                <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+                <img id="modalImage" src="" alt="Beitrag Bild">
+                <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+                <div id="imageCounter" class="image-counter">1 / 1</div>
+            </div>
+
+            <div class="modal-text-container">
+                <h2 id="modalTitle"></h2>
+                <div id="modalText" class="modal-body-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VOLLBILD-MENÜ -->
+    <div id="fullMenu" class="full-menu hidden">
+        <button id="closeBtn" class="close-btn" onclick="document.getElementById('fullMenu').classList.add('hidden')">&times;</button>
+        
+        <div class="grid-container">
+            <a href="#" id="linkStartseite" class="card lightblue-card"><span class="card-text">Startseite</span></a>
+            <a href="#" id="linkUberUns" class="card orange-card"><span class="card-text">Über uns</span></a>
+            <a href="#" id="linkMitglieder" class="card yellow-card"><span class="card-text">SV-Mitglieder</span></a>
+            <a href="#" id="linkAktionen" class="card green-card"><span class="card-text">Aktionen & Pläne</span></a>
+            <a href="#" id="linkSocial" class="card purple-card"><span class="card-text">Social Media</span></a>
+            <a href="#" id="linkKontakt" class="card red-card"><span class="card-text">Kontakt & Hilfe</span></a>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
