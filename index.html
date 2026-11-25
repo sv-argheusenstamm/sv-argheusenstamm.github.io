@@ -28,42 +28,7 @@
 
         <div class="main-content">
             <h2 class="section-title">Neueste Informationen</h2>
-
-            <div class="news-container">
-                <!-- Beitrag 1: Fußballturnier -->
-                <article class="news-card clickable-card" onclick="openGallery('fussball', 0)">
-                    <div class="news-card-content">
-                        <div class="news-text-side">
-                            <span class="news-date">12. September 2026</span>
-                            <h3>TORRR!! ⚽⚽⚽</h3>
-                            <p class="preview-text">Gestern am 11.09. haben mehrere Schulen gegeneinander an einem Fußballturnier teilgenommen. Am Ende holte sich unsere Schule den Sieg! 🥇</p>
-                            <span class="click-hint">🔍 Klicken für Vollbild & Text</span>
-                        </div>
-                        <!-- Kleine Vorschau-Galerie an der Seite -->
-                        <div class="news-media-side">
-                            <img src="fussball-1.jpg" alt="Vorschau 1" onclick="event.stopPropagation(); openGallery('fussball', 0)">
-                            <img src="fussball-2.jpg" alt="Vorschau 2" onclick="event.stopPropagation(); openGallery('fussball', 1)">
-                            <img src="fussball-3.jpg" alt="Vorschau 3" onclick="event.stopPropagation(); openGallery('fussball', 2)">
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Beitrag 2: SR-Sitzung -->
-                <article class="news-card clickable-card" onclick="openGallery('sitzung', 0)">
-                    <div class="news-card-content">
-                        <div class="news-text-side">
-                            <span class="news-date">07. September 2026</span>
-                            <h3>Unsere erste SR-Sitzung im neuen Schuljahr 🎉</h3>
-                            <p class="preview-text">In der ersten SR-Sitzung des neuen Schuljahres am 04.09 wurden viele wichtige Themen besprochen und bestimmte Ämter gewählt...</p>
-                            <span class="click-hint">🔍 Klicken für Vollbild & Text</span>
-                        </div>
-                        <!-- Kleine Vorschau an der Seite -->
-                        <div class="news-media-side">
-                            <img src="sitzung-1.jpg" alt="Vorschau Sitzung" onclick="event.stopPropagation(); openGallery('sitzung', 0)">
-                        </div>
-                    </div>
-                </article>
-            </div>
+            <div id="news-container" class="news-container"></div>
         </div>
     </section>
 
@@ -79,7 +44,6 @@
         <div class="main-content">
             <div class="about-container">
                 <h2>Die Schülervertretung des Adolf-Reichwein-Gymnasiums</h2>
-                
                 <p class="intro-text">
                     Wir sind die Schülervertretung (SV) des Adolf-Reichwein-Gymnasiums und setzen uns aktiv für die Interessen, Wünsche und Ideen aller Schülerinnen und Schüler unserer Schule ein. Wir verstehen uns als Bindeglied zwischen der Schülerschaft, der Lehrerschaft und der Schulleitung, um den Schulalltag gemeinsam zu gestalten und zu verbessern.
                 </p>
@@ -118,85 +82,25 @@
             </div>
         </div>
 
+        <div class="main-content" id="members-container"></div>
+    </section>
+
+    <!-- 4. BEREICH: AKTIONEN UND PLÄNE -->
+    <section id="aktionen" class="page-section hidden">
+        <div class="hero-header">
+            <div class="header-content">
+                <h1>Aktionen & Pläne</h1>
+                <p>Unsere Projekte für dieses Schuljahr</p>
+            </div>
+        </div>
+
         <div class="main-content">
-            <!-- Schülersprecher -->
-            <div class="stufen-block">
-                <div class="single-image-box">
-                    <img src="schuelersprecher-team.jpg" alt="Schülersprecher und Stellvertretung" class="stufen-foto">
-                </div>
-                <div class="text-row">
-                    <div class="member-info">
-                        <h3 class="hauptamt">Schulsprecher</h3>
-                        <p class="member-name">Rasmi</p>
-                    </div>
-                    <div class="member-info">
-                        <h3>Stellv. Schulsprecherin</h3>
-                        <p class="member-name">Lina</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Oberstufensprecher -->
-            <h2 class="section-title">Oberstufe</h2>
-            <div class="stufen-block">
-                <div class="single-image-box">
-                    <img src="oberstufe-team.jpg" alt="Oberstufen Team" class="stufen-foto">
-                </div>
-                <div class="text-row">
-                    <div class="member-info">
-                        <h3>Stellv. Oberstufensprecher</h3>
-                        <p class="member-name">Luis</p>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="hauptamt">Oberstufensprecherin</h3>
-                        <p class="member-name">Aniella</p>
-                    </div>
-                    <div class="member-info">
-                        <h3>Stellv. Oberstufensprecher</h3>
-                        <p class="member-name">Lais</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mittelstufensprecher -->
-            <h2 class="section-title">Mittelstufe</h2>
-            <div class="stufen-block">
-                <div class="single-image-box">
-                    <img src="mittelstufe-team.jpg" alt="Mittelstufen Team" class="stufen-foto">
-                </div>
-                <div class="text-row">
-                    <div class="member-info">
-                        <h3>Stellv. Mittelstufensprecher</h3>
-                        <p class="member-name">Delcan</p>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="hauptamt">Mittelstufensprecher</h3>
-                        <p class="member-name">Ole</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Unterstufensprecher -->
-            <h2 class="section-title">Unterstufe</h2>
-            <div class="stufen-block">
-                <div class="single-image-box">
-                    <img src="unterstufe-team.jpg" alt="Unterstufen Team" class="stufen-foto">
-                </div>
-                <div class="text-row">
-                    <div class="member-info">
-                        <h3 class="hauptamt">Unterstufensprecher/in</h3>
-                        <p class="member-name">Name Eintragen</p>
-                    </div>
-                    <div class="member-info">
-                        <h3>Stellv. Unterstufensprecher/in</h3>
-                        <p class="member-name">Name Eintragen</p>
-                    </div>
-                </div>
-            </div>
+            <h2 class="section-title">Geplante Aktionen</h2>
+            <div class="about-grid" id="actions-container"></div>
         </div>
     </section>
 
-    <!-- 4. BEREICH: SOCIAL MEDIA -->
+    <!-- 5. BEREICH: SOCIAL MEDIA -->
     <section id="social-media" class="page-section hidden">
         <div class="hero-header">
             <div class="header-content">
@@ -238,12 +142,28 @@
         </div>
     </section>
 
+    <!-- 6. BEREICH: KONTAKT & HILFE -->
+    <section id="kontakt" class="page-section hidden">
+        <div class="hero-header">
+            <div class="header-content">
+                <h1>Kontakt & Hilfe</h1>
+                <p>Wir sind für euch da!</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2 class="section-title">Schreib uns dein Anliegen</h2>
+            <div class="about-container">
+                <p>Du hast Fragen, Anregungen oder ein Problem? Sprich uns einfach in der Schule an oder schreibe uns eine Nachricht auf Instagram!</p>
+            </div>
+        </div>
+    </section>
+
     <!-- POPUP GALLERY SLIDER MODAL -->
     <div id="galleryModal" class="modal-overlay hidden" onclick="if(event.target === this) closeGallery()">
         <div class="modal-content">
             <button class="modal-close" onclick="closeGallery()">&times;</button>
             
-            <!-- Bildbereich mit Navigation -->
             <div class="slider-container">
                 <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
                 <img id="modalImage" src="" alt="Beitrag Bild">
@@ -251,7 +171,6 @@
                 <div id="imageCounter" class="image-counter">1 / 1</div>
             </div>
 
-            <!-- Textbereich unten drunter -->
             <div class="modal-text-container">
                 <h2 id="modalTitle"></h2>
                 <div id="modalText" class="modal-body-text"></div>
@@ -267,10 +186,13 @@
             <a href="#" id="linkStartseite" class="card lightblue-card"><span class="card-text">Startseite</span></a>
             <a href="#" id="linkUberUns" class="card orange-card"><span class="card-text">Über uns</span></a>
             <a href="#" id="linkMitglieder" class="card yellow-card"><span class="card-text">SV-Mitglieder</span></a>
+            <a href="#" id="linkAktionen" class="card green-card"><span class="card-text">Aktionen & Pläne</span></a>
             <a href="#" id="linkSocial" class="card purple-card"><span class="card-text">Social Media</span></a>
+            <a href="#" id="linkKontakt" class="card red-card"><span class="card-text">Kontakt & Hilfe</span></a>
         </div>
     </div>
 
+    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
