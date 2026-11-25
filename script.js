@@ -1,104 +1,46 @@
-let currentPostIndex = null;
-let currentImageIndex = 0;
-let showAllNews = false; // Status für die Einklapp-Funktion
+// Daten der Beiträge mit genau 3 Bildern für das Fußballturnier
+const postsData = {
+    fussball: {
+        title: "TORRR!! ⚽⚽⚽",
+        images: ["fussball-1.jpg", "fussball-2.jpg", "fussball-3.jpg"],
+        text: `Gestern am 11.09. haben mehrere Schulen gegeneinander an einem Fußballturnier teilgenommen. Am Ende holte sich unsere Schule den Sieg! 🥇
 
-document.addEventListener('DOMContentLoaded', function() {
-    renderNews();
-    renderMembers();
-    renderActions();
-    setupNavigation();
-});
+Nicht nur ein Sieg auf dem Platz, sondern auch ein Gewinn für die Abikasse! Spannung, Schweiß und Siegesjubel – dieser Tag bleibt in Erinnerung! 🥳🎉🏆
 
-// 1. GENERIERE NEUESTEN INFORMATIONEN (MIT "MEHR ANZEIGEN" LOGIK)
-function renderNews() {
-    const container = document.getElementById('news-container');
-    if (!container) return;
+Danke an alle, die mitgespielt, angefeurt und unterstützt haben! ❤️ Euer Einsatz hat diesen Tag besonders gemacht. Gemeinsam sind wir stark!!!
 
-    // Standardmäßig nur die letzten 2 Beiträge anzeigen
-    const visibleCount = 2; 
-    const postsToDisplay = showAllNews ? websiteData.news : websiteData.news.slice(0, visibleCount);
+Euer SV-Team`
+    },
+    sitzung: {
+        title: "Unsere erste SR-Sitzung im neuen Schuljahr 🎉",
+        images: ["sitzung-1.jpg"],
+        text: `In der ersten SR-Sitzung des neuen Schuljahres am 04.09 wurden viele wichtige Themen besprochen und bestimmte Ämter gewählt. Das SV-Team ist motiviert und freut sich auf die gemeinsame Zusammenarbeit in diesem Schuljahr 🤗🤝
 
-    let html = postsToDisplay.map((item, index) => `
-        <article class="news-card clickable-card" onclick="openGallery(${index}, 0)">
-            <div class="news-card-content">
-                <div class="news-text-side">
-                    <span class="news-date">${item.date}</span>
-                    <h3>${item.title}</h3>
-                    <p class="preview-text">${item.preview}</p>
-                    <span class="click-hint">🔍 Klicken für Vollbild & Text</span>
-                </div>
-                <div class="news-media-side">
-                    ${item.images.map((img, imgIdx) => `
-                        <img src="${img}" alt="Vorschau" onclick="event.stopPropagation(); openGallery(${index}, ${imgIdx})">
-                    `).join('')}
-                </div>
-            </div>
-        </article>
-    `).join('');
+Themen der SR-Sitzung waren:
 
-    // Falls mehr als 2 Beiträge in config.js stehen, Button anzeigen
-    if (websiteData.news.length > visibleCount) {
-        html += `
-            <div class="load-more-box">
-                <button id="toggleNewsBtn" class="load-more-btn" onclick="toggleNews()">
-                    ${showAllNews ? '▲ Weniger anzeigen' : `▼ Weitere Beiträge anzeigen (${websiteData.news.length - visibleCount} weitere)`}
-                </button>
-            </div>
-        `;
+- SV-Team
+- Wahlergebnisse der Schülsprecher- und Stufensprecherwahl
+- KSR Deligiertenwahl -> Hauptdeligierte: Aniella und Lina; KSR stellvertretende Deligierte: Rasmi, Miro und Lais
+- Beisitzendewahl -> Assala, Kristina, Aylin, Behnam, Omar, Sami, Meher, Julia, Luis, Adam, Miro und Nina
+- SV-Reform: Modell für mehr Austausch und verbesserte Kommunikationsstrukturen zwischen Schülerschaft, Klassensprecher/innen und der SV
+- Rückblick auf die SV Arbeiten im vergangenen Schuljahr
+- Schulfest und Workshops
+- Das Social Media Team: Werbung für Instagram und Tiktok Account Tiktok: @schulervertretung1arg (folgt uns gerne)
+
+Wir wünschen euch außerdem einen tollen Start ins neue Schuljahr und ganz viel Erfolg 🤞🏼
+
+Euer SV Team`
     }
+};
 
-    container.innerHTML = html;
-}
+let currentPostKey = null;
+let currentImageIndex = 0;
 
-// Umschalten zwischen 2 Beiträgen und allen Beiträgen
-function toggleNews() {
-    showAllNews = !showAllNews;
-    renderNews();
-}
-
-// 2. GENERIERE SV-MITGLIEDER
-function renderMembers() {
-    const container = document.getElementById('members-container');
-    if (!container) return;
-
-    container.innerHTML = websiteData.members.map(group => `
-        ${group.levelTitle !== "Schülersprecher & Stellvertretung" ? `<h2 class="section-title">${group.levelTitle}</h2>` : ''}
-        <div class="stufen-block">
-            <div class="single-image-box">
-                <img src="${group.image}" alt="${group.levelTitle}" class="stufen-foto">
-            </div>
-            <div class="text-row">
-                ${group.roles.map(role => `
-                    <div class="member-info">
-                        <h3 class="${role.isHauptamt ? 'hauptamt' : ''}">${role.title}</h3>
-                        <p class="member-name">${role.name}</p>
-                    </div>
-                `).join('')}
-            </div>
-        </div>
-    `).join('');
-}
-
-// 3. GENERIERE AKTIONEN & PLÄNE
-function renderActions() {
-    const container = document.getElementById('actions-container');
-    if (!container) return;
-
-    container.innerHTML = websiteData.actions.map(action => `
-        <div class="about-box">
-            <h3>${action.icon} ${action.title}</h3>
-            ${action.subtitle ? `<p><strong>${action.subtitle}</strong></p>` : ''}
-            <p>${action.description}</p>
-        </div>
-    `).join('');
-}
-
-// 4. POPUP & SLIDER FUNKTIONEN
-function openGallery(postIndex, startIndex = 0) {
-    const post = websiteData.news[postIndex];
+function openGallery(postKey, startIndex = 0) {
+    const post = postsData[postKey];
     if (!post) return;
 
-    currentPostIndex = postIndex;
+    currentPostKey = postKey;
     currentImageIndex = startIndex;
 
     document.getElementById('modalTitle').innerText = post.title;
@@ -113,8 +55,8 @@ function closeGallery() {
 }
 
 function changeSlide(direction) {
-    if (currentPostIndex === null) return;
-    const images = websiteData.news[currentPostIndex].images;
+    if (!currentPostKey) return;
+    const images = postsData[currentPostKey].images;
 
     currentImageIndex += direction;
 
@@ -128,7 +70,7 @@ function changeSlide(direction) {
 }
 
 function updateSliderImage() {
-    const post = websiteData.news[currentPostIndex];
+    const post = postsData[currentPostKey];
     const imgElement = document.getElementById('modalImage');
     const counterElement = document.getElementById('imageCounter');
     const prevBtn = document.querySelector('.prev-btn');
@@ -137,7 +79,6 @@ function updateSliderImage() {
     imgElement.src = post.images[currentImageIndex];
     counterElement.innerText = `${currentImageIndex + 1} / ${post.images.length}`;
 
-    // Pfeile nur anzeigen, wenn mehr als 1 Bild vorhanden ist
     if (post.images.length <= 1) {
         prevBtn.style.display = 'none';
         nextBtn.style.display = 'none';
@@ -147,78 +88,44 @@ function updateSliderImage() {
     }
 }
 
-// 5. NAVIGATION ZWISCHEN ALL SEITENBEREICHEN
-function setupNavigation() {
+// Navigation zwischen allen 6 Menüpunkten
+document.addEventListener('DOMContentLoaded', function() {
     const fullMenu = document.getElementById('fullMenu');
     
-    const pageMap = {
-        'linkStartseite': document.getElementById('startseite'),
-        'linkUberUns': document.getElementById('uber-uns'),
-        'linkMitglieder': document.getElementById('sv-mitglieder'),
-        'linkAktionen': document.getElementById('aktionen'),
-        'linkSocial': document.getElementById('social-media'),
-        'linkKontakt': document.getElementById('kontakt')
-    };
+    const linkStartseite = document.getElementById('linkStartseite');
+    const linkUberUns = document.getElementById('linkUberUns');
+    const linkMitglieder = document.getElementById('linkMitglieder');
+    const linkAktionen = document.getElementById('linkAktionen');
+    const linkSocial = document.getElementById('linkSocial');
+    const linkKontakt = document.getElementById('linkKontakt');
+
+    const pageStartseite = document.getElementById('startseite');
+    const pageUberUns = document.getElementById('uber-uns');
+    const pageMitglieder = document.getElementById('sv-mitglieder');
+    const pageAktionen = document.getElementById('aktionen');
+    const pageSocial = document.getElementById('social-media');
+    const pageKontakt = document.getElementById('kontakt');
 
     function hideAllPages() {
-        Object.values(pageMap).forEach(page => {
-            if (page) page.classList.add('hidden');
-        });
+        if (pageStartseite) pageStartseite.classList.add('hidden');
+        if (pageUberUns) pageUberUns.classList.add('hidden');
+        if (pageMitglieder) pageMitglieder.classList.add('hidden');
+        if (pageAktionen) pageAktionen.classList.add('hidden');
+        if (pageSocial) pageSocial.classList.add('hidden');
+        if (pageKontakt) pageKontakt.classList.add('hidden');
     }
 
-    Object.keys(pageMap).forEach(linkId => {
-        const link = document.getElementById(linkId);
-        if (link) {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                hideAllPages();
-                if (pageMap[linkId]) pageMap[linkId].classList.remove('hidden');
-                if (fullMenu) fullMenu.classList.add('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-    });
-}
-
-    // ==========================================
-// POPUP MIT CHECKBOX + LINK ZU DATENSCHUTZ.JS
-// ==========================================
-document.addEventListener("DOMContentLoaded", function () {
-    const banner = document.getElementById("cookie-banner");
-    const checkbox = document.getElementById("privacy-checkbox");
-    const acceptBtn = document.getElementById("accept-cookie-btn");
-
-    // Start-Popup nur anzeigen, wenn noch nicht bestätigt
-    if (banner && !localStorage.getItem("sv_privacy_accepted")) {
-        banner.classList.remove("hidden");
+    function navigateTo(page) {
+        hideAllPages();
+        if (page) page.classList.remove('hidden');
+        if (fullMenu) fullMenu.classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Button nur aktivieren, wenn das Kästchen angehakt ist
-    if (checkbox && acceptBtn) {
-        function updateButtonState() {
-            acceptBtn.disabled = !checkbox.checked;
-            acceptBtn.style.opacity = checkbox.checked ? "1" : "0.5";
-            acceptBtn.style.cursor = checkbox.checked ? "pointer" : "not-allowed";
-        }
-
-        updateButtonState();
-        checkbox.addEventListener("change", updateButtonState);
-
-        acceptBtn.addEventListener("click", function () {
-            if (!checkbox.checked) return;
-            localStorage.setItem("sv_privacy_accepted", "true");
-            banner.classList.add("hidden");
-        });
-    }
-
-    // Klick auf "Datenschutzbedingungen" öffnet den Text aus datenschutz.js
-    document.addEventListener("click", function (event) {
-        const trigger = event.target.closest("[data-open-datenschutz]");
-        if (!trigger) return;
-        event.preventDefault();
-        if (typeof openDatenschutzModal === "function") {
-            openDatenschutzModal();
-        }
-    });
+    if (linkStartseite) linkStartseite.addEventListener('click', (e) => { e.preventDefault(); navigateTo(pageStartseite); });
+    if (linkUberUns) linkUberUns.addEventListener('click', (e) => { e.preventDefault(); navigateTo(pageUberUns); });
+    if (linkMitglieder) linkMitglieder.addEventListener('click', (e) => { e.preventDefault(); navigateTo(pageMitglieder); });
+    if (linkAktionen) linkAktionen.addEventListener('click', (e) => { e.preventDefault(); navigateTo(pageAktionen); });
+    if (linkSocial) linkSocial.addEventListener('click', (e) => { e.preventDefault(); navigateTo(pageSocial); });
+    if (linkKontakt) linkKontakt.addEventListener('click', (e) => { e.preventDefault(); navigateTo(pageKontakt); });
 });
-
