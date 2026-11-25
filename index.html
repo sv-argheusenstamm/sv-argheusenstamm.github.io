@@ -193,20 +193,36 @@
     </div>
 
     <script src="config.js"></script>
-    <script src="script.js"></script>
-
-    <!-- DATENSCHUTZ / COOKIE POPUP -->
+    <script src="script.js"></
+       
+        <!-- DATENSCHUTZ / POPUP HINWEIS -->
 <div id="cookie-banner" class="modal-overlay hidden">
-    <div class="modal-content" style="max-width: 480px; text-align: center; padding: 30px 20px;">
-        <h2 style="color: #1a2b4c; margin-bottom: 12px;">Hinweis & Datenschutz</h2>
-        <p style="font-size: 0.95rem; color: #444; margin-bottom: 20px; line-height: 1.5;">
-            Diese Website wird über GitHub Pages bereitgestellt. Beim Nutzen der Verlinkungen zu unseren Social-Media-Kanälen (Instagram/TikTok) gelten deren jeweilige Datenschutzbestimmungen.
+    <div class="modal-content" style="max-width: 520px; text-align: left; padding: 25px;">
+        <h2 style="color: #1a2b4c; margin-bottom: 12px; font-size: 1.45rem; text-align: center;">
+            Hinweis &amp; Datenschutz
+        </h2>
+
+        <p style="font-size: 0.92rem; color: #444; margin-bottom: 18px; line-height: 1.5;">
+            Diese Website wird über <strong>GitHub Pages</strong> bereitgestellt. Beim Aufruf fallen technisch bedingte Zugriffsdaten an; bei Links/QR-Codes zu externen Plattformen gelten deren Datenschutzbestimmungen.
         </p>
-        <button id="accept-cookie-btn" class="load-more-btn" style="width: 100%; border-radius: 8px;">
-            Verstanden & Akzeptieren
+
+        <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; color: #222; margin-bottom: 20px; cursor: pointer; line-height: 1.45;">
+            <input id="privacy-checkbox" type="checkbox" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0;">
+            <span>
+                Ich habe die
+                <a href="#" data-open-datenschutz style="color: #1a2b4c; font-weight: 600; text-decoration: underline;">
+                    Datenschutzbedingungen
+                </a>
+                gelesen und akzeptiert.
+            </span>
+        </label>
+
+        <button id="accept-cookie-btn" type="button" class="load-more-btn" disabled style="width: 100%; border-radius: 8px; padding: 12px; opacity: 0.5; cursor: not-allowed;">
+            Verstanden
         </button>
     </div>
 </div>
+
     
 </body>
 </html>
