@@ -179,3 +179,21 @@ function setupNavigation() {
         }
     });
 }
+// DATENSCHUTZ POPUP LOGIK
+document.addEventListener("DOMContentLoaded", function() {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookie-btn");
+
+    // Prüfen, ob der Hinweis bereits akzeptiert wurde
+    if (banner && !localStorage.getItem("sv_privacy_accepted")) {
+        banner.classList.remove("hidden");
+    }
+
+    // Beim Klick auf "Verstanden": Hinweis im Browser merken und Popup schließen
+    if (acceptBtn) {
+        acceptBtn.addEventListener("click", function() {
+            localStorage.setItem("sv_privacy_accepted", "true");
+            banner.classList.add("hidden");
+        });
+    }
+});
