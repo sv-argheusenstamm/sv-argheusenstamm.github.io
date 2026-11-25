@@ -179,21 +179,46 @@ function setupNavigation() {
         }
     });
 }
-// DATENSCHUTZ POPUP LOGIK
-document.addEventListener("DOMContentLoaded", function() {
+
+    // ==========================================
+// POPUP MIT CHECKBOX + LINK ZU DATENSCHUTZ.JS
+// ==========================================
+document.addEventListener("DOMContentLoaded", function () {
     const banner = document.getElementById("cookie-banner");
+    const checkbox = document.getElementById("privacy-checkbox");
     const acceptBtn = document.getElementById("accept-cookie-btn");
 
-    // Prüfen, ob der Hinweis bereits akzeptiert wurde
+    // Start-Popup nur anzeigen, wenn noch nicht bestätigt
     if (banner && !localStorage.getItem("sv_privacy_accepted")) {
         banner.classList.remove("hidden");
     }
 
-    // Beim Klick auf "Verstanden": Hinweis im Browser merken und Popup schließen
-    if (acceptBtn) {
-        acceptBtn.addEventListener("click", function() {
+    // Button nur aktivieren, wenn das Kästchen angehakt ist
+    if (checkbox && acceptBtn) {
+        function updateButtonState() {
+            acceptBtn.disabled = !checkbox.checked;
+            acceptBtn.style.opacity = checkbox.checked ? "1" : "0.5";
+            acceptBtn.style.cursor = checkbox.checked ? "pointer" : "not-allowed";
+        }
+
+        updateButtonState();
+        checkbox.addEventListener("change", updateButtonState);
+
+        acceptBtn.addEventListener("click", function () {
+            if (!checkbox.checked) return;
             localStorage.setItem("sv_privacy_accepted", "true");
             banner.classList.add("hidden");
         });
     }
+
+    // Klick auf "Datenschutzbedingungen" öffnet den Text aus datenschutz.js
+    document.addEventListener("click", function (event) {
+        const trigger = event.target.closest("[data-open-datenschutz]");
+        if (!trigger) return;
+        event.preventDefault();
+        if (typeof openDatenschutzModal === "function") {
+            openDatenschutzModal();
+        }
+    });
 });
+
