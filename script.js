@@ -15,11 +15,30 @@ function renderNews() {
     if (!container) return;
 
     // Standardmäßig nur die letzten 2 Beiträge anzeigen
-        const visibleCount = 2;
-    
-    // Kehrt die Reihenfolge um, behält aber den originalen Index für die Detail-Ansicht
-    const reversedNews = websiteData.news.map((item, originalIndex) => ({ ...item, originalIndex })).reverse();
-    const postsToDisplay = showAllNews ? reversedNews : reversedNews.slice(0, visibleCount);
+            const visibleCount = 2;
+
+    const monate = {
+        "januar": 0, "februar": 1, "märz": 2, "april": 3,
+        "mai": 4, "juni": 5, "juli": 6, "august": 7,
+        "september": 8, "oktober": 9, "november": 10, "dezember": 11
+    };
+
+    function parseGermanDate(dateStr) {
+        if (!dateStr) return 0;
+        const match = dateStr.trim().toLowerCase().match(/(\d{1,2})\.\s*([a-zäöü]+)\s*(\d{4})/);
+        if (!match) return 0;
+        const tag = parseInt(match[1], 10);
+        const monat = monate[match[2]];
+        const jahr = parseInt(match[3], 10);
+        if (monat === undefined) return 0;
+        return new Date(jahr, monat, tag).getTime();
+    }
+
+    const sortedNews = websiteData.news
+        .map((item, originalIndex) => ({ ...item, originalIndex }))
+        .sort((a, b) => parseGermanDate(b.date) - parseGermanDate(a.date));
+
+    const postsToDisplay = showAllNews ? sortedNews : sortedNews.slice(0, visibleCount);
 
     let html = postsToDisplay.map((item) => `
         <article class="news-card clickable-card" onclick="openGallery(${item.originalIndex}, 0)">
@@ -38,6 +57,7 @@ function renderNews() {
             </div>
         </article>
     `).join('');
+
 
     // Falls mehr als 2 Beiträge in config.js stehen, Button anzeigen
     if (websiteData.news.length > visibleCount) {
