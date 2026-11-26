@@ -15,11 +15,14 @@ function renderNews() {
     if (!container) return;
 
     // Standardmäßig nur die letzten 2 Beiträge anzeigen
-    const visibleCount = 2; 
-    const postsToDisplay = showAllNews ? websiteData.news : websiteData.news.slice(0, visibleCount);
+        const visibleCount = 2;
+    
+    // Kehrt die Reihenfolge um, behält aber den originalen Index für die Detail-Ansicht
+    const reversedNews = websiteData.news.map((item, originalIndex) => ({ ...item, originalIndex })).reverse();
+    const postsToDisplay = showAllNews ? reversedNews : reversedNews.slice(0, visibleCount);
 
-    let html = postsToDisplay.map((item, index) => `
-        <article class="news-card clickable-card" onclick="openGallery(${index}, 0)">
+    let html = postsToDisplay.map((item) => `
+        <article class="news-card clickable-card" onclick="openGallery(${item.originalIndex}, 0)">
             <div class="news-card-content">
                 <div class="news-text-side">
                     <span class="news-date">${item.date}</span>
@@ -29,7 +32,7 @@ function renderNews() {
                 </div>
                 <div class="news-media-side">
                     ${item.images.map((img, imgIdx) => `
-                        <img src="${img}" alt="Vorschau" onclick="event.stopPropagation(); openGallery(${index}, ${imgIdx})">
+                        <img src="${img}" alt="Vorschau" onclick="event.stopPropagation(); openGallery(${item.originalIndex}, ${imgIdx})">
                     `).join('')}
                 </div>
             </div>
