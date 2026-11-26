@@ -99,7 +99,7 @@ Neue Verbindungslehrkraft:
 - Glückwunsch & auf eine gute Zusammenarbeit! 🎉👏
 
 Finanzielle Beauftragte:
-- Leon und Aneli wurden als finanzielle Beauftragte gewählt
+- Sami und Ardil wurden als finanzielle Beauftragte gewählt
 - Zuständig für finanzielle Angelegenheiten der SV
 
 Schulfest:
