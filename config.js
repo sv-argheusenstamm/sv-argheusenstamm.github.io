@@ -83,34 +83,35 @@ Euer SV Team
 
 (Autoren/Autorinnen: Social Media Team)`
         },
-        {
+        
+     {
             id: "sitzung 2",
-            date "30. September 2026",
+            date: "30. September 2026",
             title: "SR-Sitzung 30.09.",
-            preview: "Am 30.09.26 hatten wir unsere zweite SR-Sitzung des Jahres und haben über wichtige Themen gesprochen und abgestimmt.",
+            preview: `Am 30.09.26 hatten wir unsere zweite SR-Sitzung des Jahres und haben über wichtige Themen gesprochen und abgestimmt...`,
             images: ["sitzung-2.jpg", "sitzung-2.1.jpg"],
             text: `Am 30.09.26 hatten wir unsere zweite SR-Sitzung des Jahres und haben über wichtige Themen gesprochen und abgestimmt.
 
 Dazu gehören:
 
 Neue Verbindungslehrkraft:
-- Frau Groh wurde als neue Verbindungslehrkraft gewählt
+- Frau Groß wurde als neue Verbindungslehrkraft gewählt
 - Glückwunsch & auf eine gute Zusammenarbeit! 🎉👏
 
 Finanzielle Beauftragte:
-- Sami und Ardil wurden als finanzielle Beauftragte gewählt
+- Leon und Aneli wurden als finanzielle Beauftragte gewählt
 - Zuständig für finanzielle Angelegenheiten der SV
 
 Schulfest:
 - Themen/Aufgaben für das Schulfest wurden verteilt
 - Planung nimmt weiter Form an
 
-Projekt „Safe im Recht“ wurde genehmigt:
+Projekt "Safe in Recht" wurde genehmigt:
 - Start im 2. Halbjahr
-- Zunächst für die 7. Klassen
+- Gedacht für die 7. Klassen
 
 (Autoren/Autorinnen: Social Media Team)`
-        },      
+        },        
 
     ],
 
